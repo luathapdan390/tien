@@ -1,0 +1,195 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400&display=swap');
+
+/* Basic setup and background */
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background-color: #121212;
+    color: #E0E0E0;
+    line-height: 1.8;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    overflow-x: hidden;
+}
+
+/* Container for the content */
+.container {
+    background: rgba(25, 25, 25, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 15px;
+    padding: 3rem 2rem;
+    max-width: 800px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+}
+
+/* Decorative elements with gold shine */
+.container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: radial-gradient(circle at top left, rgba(255, 215, 0, 0.4), transparent 50%),
+                radial-gradient(circle at bottom right, rgba(255, 215, 0, 0.4), transparent 50%);
+    z-index: -1;
+    border-radius: 20px;
+    animation: gold-pulse 10s infinite ease-in-out;
+}
+
+@keyframes gold-pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.02); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 0.5; }
+}
+
+/* Typography */
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-style: italic;
+    text-align: center;
+    color: #FFC107;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.letter-content p {
+    font-size: 1.2rem;
+    text-align: justify;
+    margin-bottom: 1.5rem;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 3rem;
+    font-style: italic;
+    color: #FFD700;
+}
+
+/* Golden text and hidden effect */
+.golden-word {
+    color: transparent;
+    cursor: pointer;
+    position: relative;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+    background: linear-gradient(45deg, #FFD700, #FFECB3, #FFD700);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.golden-word::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFD700;
+    transform: translateY(-50%);
+    transition: all 0.5s ease-in-out;
+    z-index: -1;
+}
+
+.golden-word:hover {
+    background: none;
+    -webkit-text-fill-color: #FFD700;
+}
+
+.golden-word.revealed {
+    color: #FFD700;
+    background: none;
+    -webkit-text-fill-color: #FFD700;
+}
+
+.golden-word.revealed::after {
+    height: 0;
+}
+
+/* Voice recorder section */
+.voice-recorder {
+    margin-top: 4rem;
+    text-align: center;
+    background: rgba(40, 40, 40, 0.6);
+    border-radius: 10px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.recorder-controls button {
+    background: #FFD700;
+    color: #121212;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 50px;
+    margin: 0.5rem;
+    transition: all 0.3s ease;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: bold;
+}
+
+.recorder-controls button:hover:enabled {
+    background: #FFC107;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.recorder-controls button:disabled {
+    background: #555;
+    cursor: not-allowed;
+    color: #A0A0A0;
+    box-shadow: none;
+}
+
+#audio-playback {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+#download-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #FFD700;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+#download-link:hover {
+    color: #FFC107;
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .letter-content p {
+        font-size: 1rem;
+    }
+}
